@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+    font-family:  Vazirmatn !important;
+  }
+  @layer components{
+
+    .sidebar-tooltip{
+        @apply  w-auto p-2 m-2 min-w-max  rounded-md shadow-md
+        text-[#ffffff] bg-[#23272a] 
+        text-[10px] font-main 
+        transition-all duration-100 scale-0 origin-left;
+    }
+  }
+
+  @layer components{
+    .custom-dot-list{
+        @apply p-10;
+    }
+  }
