@@ -1,8 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
-import Navbar from "./Navbar";
 import { data } from "../Data/data.js";
 import { Link } from "react-router-dom";
-import { HiOutlinePlus } from "react-icons/hi2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaTelegram } from "react-icons/fa";
@@ -10,24 +8,36 @@ import { BsInstagram } from "react-icons/bs";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { RiTwitterXLine } from "react-icons/ri";
 
-const MyContext = createContext();
+
+const HomepageHeader = () => {
+  return (
+    <div className=" w-full bg-transparent flex items-center mx-[300px] font-regular">
+        <Link to="/" className="w-[20%]">
+        <span className="font-bold text-accent-200 text-[48px]">
+          Iran Health
+        </span>
+        </Link>
+      
+        <Link to="/" className="w-[5%] hover:text-gray-300">Home</Link>
+        <Link to="/about" className="w-[5%] hover:text-gray-300">About</Link>
+        <Link to="/services" className="w-[5%] hover:text-gray-300">Services</Link>
+        <Link to="/contact" className="w-[5%] hover:text-gray-300">Contact</Link>
+    </div>
+  );
+}
 
 const Homepage = () => {
-  const [user] = useState(localStorage.getItem("ID"));
-  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     AOS.init({ duration: 1200 }); //animation on scroll
   });
 
   return (
-    <MyContext.Provider value={[showModal, setShowModal]}>
       <div className="">
-
-        <Navbar data-aos="fade-down" />
+        <HomepageHeader/>
         <div className=" flex flex-col justify-center items-center">
           {/* item1 */}
 
-          <div className=" w-[100%] bg-[#7aceff22] py-10 ">
+          <div className=" w-[100%] bg-[#7aceff22] mt-[-300px] py-10 ">
             <div className="py-[40px]">
               <span className=" text-accent-200 font-bold text-[45px]">
                 به همپا خییییییلی خوش اومدی
@@ -150,7 +160,7 @@ const Homepage = () => {
               <span className=" flex flex-col text-accent-200 font-bold text-[28px]">
                 از همین حالا می تونی شروع کنی!
               </span>
-              {!user ? (
+              {/* {!user ? (
                 <Link
                   to="/login"
                   data-aos="fade-up"
@@ -170,15 +180,11 @@ const Homepage = () => {
                     ورود به صفحه پروفایل
                   </button>
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
         </div>
-        <HiOutlinePlus
-          onClick={() => setShowModal(true)}
-          className=" animate-bounce fixed left-12 hover:cursor-pointer bottom-10 p-1 rounded-full  bg-bg-100 shadow-md text-primary-100"
-          size={100}
-        />
+        
 
         {/* exclusive footer */}
         <div className=" w-full bottom-0 h-[300px] bg-bg-200/90 shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)] flex items-center justify-center">
@@ -238,7 +244,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-    </MyContext.Provider>
   );
 };
 
